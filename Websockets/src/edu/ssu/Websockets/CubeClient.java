@@ -22,6 +22,7 @@ public class CubeClient extends WebSocketClient {
     @Override
     public void onOpen(ServerHandshake handshakedata) {
         System.out.println("new connection opened");
+        this.send("Hello");
     }
 
     @Override
@@ -42,5 +43,7 @@ public class CubeClient extends WebSocketClient {
     public static void main(String[] args) throws URISyntaxException { 
         WebSocketClient client = new CubeClient(new URI("ws://localhost:8887"), new Draft_10());
         client.connect();
+        
+        client.send("I am the server!");
     }
 }
